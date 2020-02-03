@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   get '/accounts', to: 'accounts#create'
   get '/accounts/balance/:account_id', to: 'accounts#get_balance'
+  post '/transfers', to:'transfers#create'
 end
