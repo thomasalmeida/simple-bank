@@ -56,7 +56,7 @@ Transfers credit from an acccount to other account
 
 ## Usage
  Running tests:
- `rails test`
+ `rails spec`
 
 ## Contributing
 
