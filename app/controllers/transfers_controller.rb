@@ -5,7 +5,7 @@ class TransfersController < ApplicationController
     transfer = Transfer.create(transfer_params) 
 
     if transfer.valid?
-      render json: { transfer: transfer }
+      render json: { transfer: transfer }, status: :created
     else
       render json: { errors: transfer.errors.full_messages }, status: :not_acceptable
     end
