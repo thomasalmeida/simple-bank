@@ -22,7 +22,7 @@ RSpec.describe 'Transfers', type: :request do
           headers: { 'HTTP_AUTHORIZATION': "Bearer #{@token}" }
         }
         expect(response).to have_http_status :not_acceptable
-        expect(JSON.parse(response.body)['failure']).equal? 'not balance'
+        expect(JSON.parse(response.body)['failure']).equal? 'no balance'
       end
 
       it 'not creates a transfer identical source and destination' do
