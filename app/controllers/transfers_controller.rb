@@ -20,7 +20,7 @@ class TransfersController < ApplicationController
   def check_balance
     account = Account.find params[:source_id]
     if account.balance < params[:amount].to_f
-      render json: { failure: 'not balance' }, status: :not_acceptable
+      render json: { failure: 'no balance' }, status: :not_acceptable
     end
   end
 end
