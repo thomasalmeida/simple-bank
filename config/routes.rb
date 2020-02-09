@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'check#ping'
+
   post '/signup', to: 'users#create'
   post '/signin', to: 'auth#signin'
 

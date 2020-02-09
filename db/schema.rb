@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_03_114057) do
+ActiveRecord::Schema.define(version: 2020_02_08_225803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 2020_02_03_114057) do
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "deposits", force: :cascade do |t|
+    t.bigint "destination_id", null: false
+    t.float "amount", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["destination_id"], name: "index_deposits_on_destination_id"
   end
 
   create_table "transfers", force: :cascade do |t|
@@ -35,6 +43,14 @@ ActiveRecord::Schema.define(version: 2020_02_03_114057) do
     t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "withdrawals", force: :cascade do |t|
+    t.bigint "source_id", null: false
+    t.float "amount", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["source_id"], name: "index_withdrawals_on_source_id"
   end
 
 end

@@ -6,11 +6,24 @@ class Account < ApplicationRecord
   has_many :withdrawals, :class_name => 'Withdrawal', :foreign_key => 'source_id'
 
   def balance
-    sum_deposits, sum_withdrawals = 0, 0
+    deposits_sum(self) - withdrawals_sum(self)
+  end
 
-    self.withdrawals.to_a.each { |w| sum_withdrawals += w.amount }
-    self.deposits.to_a.each { |w| sum_deposits += w.amount }
+  private
 
-    sum_deposits - sum_withdrawals
+  def deposits_sum(account)
+    sum = 0
+    account.deposits.each { |d| sum += d.amount }
+    account.transfer_deposits.to_a.each { |d| sum += d.amount }
+
+    sum
+  end
+
+  def withdrawals_sum(account)
+    sum = 0
+    account.withdrawals.each { |w| sum += w.amount }
+    account.transfer_withdrawals.to_a.each { |w| sum += w.amount }
+
+    sum
   end
 end
