@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post '/transfers', to: 'transfers#create'
 
   post '/deposits', to: 'deposits#create'
+  post '/withdrawals', to: 'withdrawals#create'
 end
