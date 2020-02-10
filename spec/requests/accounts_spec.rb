@@ -14,7 +14,7 @@ RSpec.describe 'Accounts', type: :request do
       end
 
       it 'creates an account' do
-        get '/accounts', { params: {}, headers: { 'HTTP_AUTHORIZATION': "Bearer #{@token}" } }
+        post '/accounts', { params: {}, headers: { 'HTTP_AUTHORIZATION': "Bearer #{@token}" } }
         expect(response).to have_http_status :created
       end
 
@@ -33,7 +33,7 @@ RSpec.describe 'Accounts', type: :request do
 
     context 'with user NOT authenticate' do
       it 'dont creates an account' do
-        get '/accounts'
+        post '/accounts'
         expect(response).to have_http_status :unauthorized
       end
 
